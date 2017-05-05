@@ -110,4 +110,4 @@ Por exemplo, para a correção de um bug alterando a versão de 1.0.0 para 1.0.1
 
 Após este comando: 
 - Arquivo com a nova versão será gerado em dist/bank-account-validator-MAJOR.MINOR.PATCH.min.js
-- A nova versão ficará registrada no package.json no campo "version"
+- A nova versão ficará registrada no package.json no campo "version" 
