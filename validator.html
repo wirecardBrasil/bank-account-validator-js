@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Criptografia Moip">
+    <meta name="author" content="Moip">
+    <title>Validação de contas bancárias</title>
+
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://moip.com.br/docs/stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="https://moip.com.br/docs/stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="build/bank-account-validator.min.js"></script>
+
+  </head>
+
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+      $("#validate_bank_account").click(function() {
+        Moip.BankAccount.validate({
+          bankNumber         : $("#bank_number").val(),
+          agencyNumber       : $("#agency_number").val(),
+          agencyCheckNumber  : $("#agency_check_number").val(),
+          accountNumber      : $("#account_number").val(),
+          accountCheckNumber : $("#account_check_number").val(),
+          valid: function() {
+            $("#success_message").removeClass('hide').fadeIn('slow');
+            $("#error_message").fadeOut();
+          },
+          invalid: function(data) {
+            var errors = "Ocorreram os seguintes erros:<br/>";
+            for(i in data.errors){
+              errors += "- " + data.errors[i].description + "<br/>";
+            }
+            $("#error_message").removeClass('hide').fadeIn('slow');
+            $("#error_message").html(errors);
+            $("#success_message").fadeOut();
+          }
+        });
+      });
+    });
+  </script>
+
+  <body>
+
+    <div class="row">
+      <h2 class="form-signin-heading" align="center">Bank Account Validator</h2>
+      <hr>
+
+      <div class="col-md-4">&nbsp;</div>
+
+      <div class="col-md-4">
+
+        <div id="success_message" class="alert alert-success hide">Conta Bancária válida</div>
+        <div id="error_message" class="alert alert-danger hide"></div>
+
+        <form class="form-signin">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <label>Banco</label>
+              <select id="bank_number" class="form-control">
+                <option value="">Selecione o banco</option>
+                <optgroup label="Principais bancos">
+                  <option value="001">BANCO DO BRASIL S.A.</option>
+                  <option value="237">BANCO BRADESCO S.A.</option>
+                  <option value="341">BANCO ITAÚ S.A.</option>
+                  <option value="104">CAIXA ECONOMICA FEDERAL</option>
+                  <option value="033">BANCO SANTANDER BANESPA S.A.</option>
+                  <option value="399">HSBC BANK BRASIL S.A.</option>
+                  <option value="745">BANCO CITIBANK S.A.</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+
+          <br/>
+
+          <div class="row">
+            <div class="col-md-5">
+              <label>Agência</label>
+              <input id="agency_number" placeholder="Exemplo: 0170" maxlength="5" type="text" class="form-control" />
+            </div>
+            <div class="col-md-4">
+              <label>Dígito</label>
+              <input id="agency_check_number" placeholder="Exemplo: 8" maxlength="2" type="text" class="form-control" />
+            </div>
+          </div>
+
+          <br/>
+
+          <div class="row">
+            <div class="col-md-5">
+              <label>Conta corrente</label>
+              <input id="account_number" placeholder="Exemplo: 97845" maxlength="12" type="text" class="form-control" />
+            </div>
+            <div class="col-md-4">
+              <label>Dígito</label>
+              <input id="account_check_number" placeholder="Exemplo: 1" maxlength="2" type="text" class="form-control" />
+            </div>
+          </div>
+
+          <br/>
+
+          <input type="button" value="Validar conta bancária" id="validate_bank_account" class="btn btn-lg btn-primary btn-block"/>
+
+        </form>
+
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+    <footer class="footer">
+      <div class="container">
+        <div class="text-muted pull-right">Powered by <b><a href="http://www.moip.com.br">Moip</a></b></div>
+      </div>
+    </footer>
+    <div class="col-md-4"></div>
+  </body>
+</html>

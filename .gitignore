@@ -1,0 +1,11 @@
+/node_modules/*
+/build/*
+/.grunt/*
+/cov/*
+
+_SpecRunner.html
+
+.todo
+*.swp
+.idea
+.DS_Store
