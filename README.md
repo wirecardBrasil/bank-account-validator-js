@@ -19,7 +19,7 @@ Para um funcionamento inicial, copie o trecho de código abaixo para sua página
 
 ```html
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/moip/bank-account-validator-js/master/dist/bank-account-validator.min.js"></script>
+<script type="text/javascript" src="https://assets.moip.com.br/v2/bank-account-validator.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $("#validate_bank_account").click(function() {
@@ -53,6 +53,7 @@ Para um funcionamento inicial, copie o trecho de código abaixo para sua página
     <option value="399">HSBC BANK BRASIL S.A.</option>
     <option value="151">BANCO NOSSA CAIXA S.A.</option>
     <option value="745">BANCO CITIBANK S.A.</option>
+    <option value="041">BANCO DO ESTADO DO RIO GRANDE DO SUL S.A.</option>
   </select>
 
   <input id="agency_number" placeholder="Agência" type="text"/>
