@@ -18,7 +18,8 @@
         "341": Moip.ItauValidator,
         "033": Moip.SantanderValidator,
         "745": Moip.CitibankValidator,
-        "399": Moip.HSBCValidator
+        "399": Moip.HSBCValidator,
+        "041": Moip.BanrisulValidator
       };
 
       if (validators[bankNumber]) {
