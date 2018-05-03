@@ -31,7 +31,8 @@
     },
     
     accountCheckNumberMatch: function(bankAccount) {
-      return true;
+      var checkNumberCalculated = Moip.SantanderCheckNumberCalculator.calculateAccount(bankAccount.agencyNumber,bankAccount.accountNumber);
+      return checkNumberCalculated === bankAccount.accountCheckNumber.toUpperCase();
     },
 
     agencyNumberMsgError: function() {
