@@ -43,6 +43,16 @@
       }
     },
 
+    agencyCheckNumberOptionalMsgError: function(length) {
+      if (length === undefined || length === 0) {
+        return "O dígito da agência deve ser vazio";
+      } else if (length === 1) {
+        return "O dígito da agência deve conter 1 dígito";
+      } else if(length !== 0) {
+        return "O dígito da agência deve conter " + length + " números. Complete com zeros a esquerda se necessário.";  
+      }
+    },
+
     accountNumberMsgError: function(length) {
       return "A conta corrente deve conter " + length + " números. Complete com zeros a esquerda se necessário.";
     },
